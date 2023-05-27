@@ -19,7 +19,14 @@ startBtn.addEventListener("click",() =>{
         intervalId = setInterval(updateTime,100)
     }
 });
-resetBtn.addEventListener();
+resetBtn.addEventListener("click",() =>{
+    if (!paused) {
+        paused = true;
+        elapsedTime = Date.now() - startTime;
+        clearInterval(intervalId);
+         
+    }
+} );
 pauseBtn.addEventListener();
 
 function updateTime(){
