@@ -1,7 +1,7 @@
 const timeDisplay = document.getElementById("timeDisplay");
 const startBtn = document.getElementById("startButton");
 const pauseBtn = document.getElementById("pauseButton");
-const resetBtn = document.getElementById("reserButton");
+const resetBtn = document.getElementById("resetButton");
 
 let startTime = 0;
 let elapsedTime = 0;
@@ -16,18 +16,30 @@ startBtn.addEventListener("click",() =>{
     if(paused){
         paused = false;
         startTime = Date.now() - elapsedTime;
-        intervalId = setInterval(updateTime,100)
+        intervalId = setInterval(updateTime,100);
     }
 });
-resetBtn.addEventListener("click",() =>{
+pauseBtn.addEventListener("click",() =>{
     if (!paused) {
         paused = true;
         elapsedTime = Date.now() - startTime;
         clearInterval(intervalId);
-         
+        
     }
 } );
-pauseBtn.addEventListener();
+resetBtn.addEventListener("click",() =>{
+    paused = true;
+    clearInterval(intervalId);
+    startTime = 0;
+    elapsedTime = 0;
+    currentTime = 0; 
+    hrs = 0;
+    mins = 0;
+    secs = 0; 
+    timeDisplay.textContent = "00:00:00";
+
+}
+);
 
 function updateTime(){
 
